@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class Tablica : MonoBehaviour
@@ -24,7 +24,7 @@ public class Tablica : MonoBehaviour
            
             if (Input.GetKeyDown(KeyCode.E))
             {
-                anim.SetBool("tablica", true);
+                SceneManager.LoadScene("GameScene");
             }
         }
     }
