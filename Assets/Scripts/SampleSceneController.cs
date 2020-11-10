@@ -6,6 +6,7 @@ public class SampleSceneController : MonoBehaviour
 {
     public void StartGame()
     {
+        Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene("GameScene");
     }
 }
