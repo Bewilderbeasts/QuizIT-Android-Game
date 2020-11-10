@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
     public Transform answerButtonParent;
     public GameObject questionDisplay;
     public GameObject roundEndDisplay;
+    public GameObject gameOverDisplay;
+    public Text highScoreDisplay;
 
     private DataController dataController;
     private RoundData currentRoundData;
@@ -75,7 +77,7 @@ public class GameController : MonoBehaviour
         if (isCorrect)
         {
             playerScore += currentRoundData.pointsAddedForCorrectAnswer;
-            scoreDisplayText.text = "Score: " + playerScore.ToString();
+            scoreDisplayText.text = "Wynik: " + playerScore.ToString();
         }
 
         if (questionPool.Length > questionIndex + 1)
@@ -94,19 +96,35 @@ public class GameController : MonoBehaviour
     {
         isRoundActive = false;
 
+        dataController.SubmitNewPlayerScore(playerScore);
+        //highScoreDisplay.text = dataController.GetHighestPlayerScore().ToString();
+
         questionDisplay.SetActive(false);
-        roundEndDisplay.SetActive(true);
+
+        if (playerScore < 15)
+        {
+            gameOverDisplay.SetActive(true);
+        }
+        else
+        {
+            roundEndDisplay.SetActive(true);
+        }
     }
 
     public void ReturnToMenu()
     {
-        
+
         SceneManager.LoadScene("SampleScene");
+    }
+    public void ReplayGame()
+    {
+
+        SceneManager.LoadScene("Persistent");
     }
 
     private void UpdateTimeRemainingDisplay()
     {
-        timeRemainingDisplayText.text = "Time: " + Mathf.Round(timeRemaining).ToString();
+        timeRemainingDisplayText.text = "Czas: " + Mathf.Round(timeRemaining).ToString();
     }
 
     // Update is called once per frame
