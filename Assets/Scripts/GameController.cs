@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public GameObject roundEndDisplay;
     public GameObject gameOverDisplay;
     public Text highScoreDisplay;
+    public GameObject nextRoundDisplay;
 
     private DataController dataController;
     private RoundData currentRoundData;
@@ -26,24 +27,36 @@ public class GameController : MonoBehaviour
     private float timeRemaining;
     private int questionIndex;
     private int playerScore;
+    private int playerMaxScore;
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
     // Use this for initialization
     void Start()
     {
-        
         dataController = FindObjectOfType<DataController>();
+        SetUpRound();
+        playerScore = 0;
+        playerMaxScore = 0;
+    }
+
+    public void SetUpRound()
+    {
         currentRoundData = dataController.GetCurrentRoundData();
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
         UpdateTimeRemainingDisplay();
 
-        playerScore = 0;
+       
         questionIndex = 0;
 
+        ShowPlayerScore();
         ShowQuestion();
         isRoundActive = true;
+    }
 
+    private void ShowPlayerScore()
+    {
+        scoreDisplayText.text = "Score: " + playerScore.ToString();
     }
 
     private void ShowQuestion()
@@ -74,6 +87,7 @@ public class GameController : MonoBehaviour
 
     public void AnswerButtonClicked(bool isCorrect)
     {
+        playerMaxScore += currentRoundData.pointsAddedForCorrectAnswer;
         if (isCorrect)
         {
             playerScore += currentRoundData.pointsAddedForCorrectAnswer;
@@ -101,24 +115,35 @@ public class GameController : MonoBehaviour
 
         questionDisplay.SetActive(false);
 
-        if (playerScore < 15)
+        if (playerScore < playerMaxScore/2 )
         {
             gameOverDisplay.SetActive(true);
         }
         else
         {
             roundEndDisplay.SetActive(true);
+            //nextRoundDisplay.SetActive(true);
         }
+    }
+
+    public void GoToNextRound()
+    {
+        dataController.GetNextRound();
+
+        SetUpRound();
+
+        questionDisplay.SetActive(true);
+        roundEndDisplay.SetActive(false);
     }
 
     public void ReturnToMenu()
     {
-
+        dataController.ResetCurrentRound();
         SceneManager.LoadScene("SampleScene");
     }
     public void ReplayGame()
     {
-
+        dataController.ResetCurrentRound();
         SceneManager.LoadScene("Persistent");
     }
 
