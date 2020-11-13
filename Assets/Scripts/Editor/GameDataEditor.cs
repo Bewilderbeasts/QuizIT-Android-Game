@@ -10,6 +10,7 @@ public class GameDataEditor : EditorWindow
 
     private string gameDataProjectFilePath = "/StreamingAssets/data.json";
 
+    Vector2 scrollPosition;
     [MenuItem("Window/Game Data Editor")]
     static void Init()
     {
@@ -18,6 +19,10 @@ public class GameDataEditor : EditorWindow
 
     void OnGUI()
     {
+        scrollPosition = GUILayout.BeginScrollView(
+    scrollPosition, GUILayout.Width(1500), GUILayout.Height(800));
+
+
         if (gameData != null)
         {
             SerializedObject serializedObject = new SerializedObject(this);
@@ -36,6 +41,8 @@ public class GameDataEditor : EditorWindow
         {
             LoadGameData();
         }
+
+        GUILayout.EndScrollView();
     }
 
     private void LoadGameData()
