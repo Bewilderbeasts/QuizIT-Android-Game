@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class Tablica : MonoBehaviour
 {
     private Animator anim;
+    public GameObject TablicaDisplay;
 
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -17,25 +17,26 @@ public class Tablica : MonoBehaviour
        
     }
 
-   
+    
    
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
-           
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                
-                SceneManager.LoadScene("GameScene");
-            }
+            TablicaDisplay.SetActive(true);
+            /* if (Input.GetKeyDown(KeyCode.E))
+             {
+
+                 SceneManager.LoadScene("GameScene");
+             }*/
         }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            anim.SetBool("tablica", false);
+            //anim.SetBool("tablica", false);
+            TablicaDisplay.SetActive(false);
         }
     }
    

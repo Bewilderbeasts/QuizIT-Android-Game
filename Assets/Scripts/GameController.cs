@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.CodeDom;
 using System.Globalization;
+using System.Linq;
 
 namespace Quiz.Scoreboards
 {
@@ -38,32 +39,39 @@ namespace Quiz.Scoreboards
         private int playerMaxScore;
         private int wynik;
         public string imie;
-        
+        private int numberQuestion;
+        private int currentRound;
+
         private List<GameObject> answerButtonGameObjects = new List<GameObject>();
 
         // Use this for initialization
         void Start()
         {
             dataController = FindObjectOfType<DataController>();
+            currentRound = PlayerPrefs.GetInt("currentRound");
+            playerScore = PlayerPrefs.GetInt("Score");
+            playerMaxScore = PlayerPrefs.GetInt("ScoreMax");
+            numberQuestion = 0;
+
             SetUpRound();
-            playerScore = 0;
-            playerMaxScore = 0;
         }
 
         public void SetUpRound()
         {
             currentRoundData = dataController.GetCurrentRoundData();
             questionPool = currentRoundData.questions;
-            timeRemaining = currentRoundData.timeLimitInSeconds;
-            UpdateTimeRemainingDisplay();
+            
 
 
             questionIndex = 0;
 
             ShowPlayerScore();
             ShowQuestion();
+           
             isRoundActive = true;
         }
+
+       
 
         private void ShowPlayerScore()
         {
@@ -72,10 +80,15 @@ namespace Quiz.Scoreboards
 
         private void ShowQuestion()
         {
+            timeRemaining = currentRoundData.timeLimitInSeconds;
+            UpdateTimeRemainingDisplay();
+            Debug.Log("runda: " + currentRoundData);
+            Debug.Log("pytanie: " + numberQuestion);
+            
             RemoveAnswerButtons();
             QuestionData questionData = questionPool[questionIndex];
             questionDisplayText.text = questionData.questionText;
-
+            
             for (int i = 0; i < questionData.answers.Length; i++)
             {
                 GameObject answerButtonGameObject = answerButtonObjectPool.GetObject();
@@ -99,21 +112,38 @@ namespace Quiz.Scoreboards
         public void AnswerButtonClicked(bool isCorrect)
         {
             playerMaxScore += currentRoundData.pointsAddedForCorrectAnswer;
+            numberQuestion += 1;
             if (isCorrect)
             {
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
                 scoreDisplayText.text = "Wynik: " + playerScore.ToString();
             }
-
-            if (questionPool.Length > questionIndex + 1)
+            // aula= 9 runda
+            if (currentRound == 9)
             {
-
-                questionIndex++;
-                ShowQuestion();
+                if (numberQuestion < 5)
+                {
+                    questionIndex++;
+                    ShowQuestion();
+                }
+                else
+                {
+                    EndRoundAula();
+                }
             }
             else
             {
-                EndRound();
+                if (numberQuestion < 3)
+                {
+                    questionIndex++;
+                    ShowQuestion();
+                }
+                else
+                {
+                    EndRound();
+                }
+
+
             }
 
         }
@@ -138,6 +168,26 @@ namespace Quiz.Scoreboards
             }
         }
 
+        public void EndRoundAula()
+        {
+            isRoundActive = false;
+
+            dataController.SubmitNewPlayerScore(playerScore);
+
+            questionDisplay.SetActive(false);
+
+            if (playerScore < playerMaxScore / 2)
+            {
+                inputNameDisplay.SetActive(true);
+                inputFieldDisplay.SetActive(true);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Poziom", 1);
+                roundEndDisplay.SetActive(true);
+            }
+        }
+
         public void GoToNextRound()
         {
             dataController.GetNextRound();
@@ -147,11 +197,17 @@ namespace Quiz.Scoreboards
             questionDisplay.SetActive(true);
             roundEndDisplay.SetActive(false);
         }
-
+        public void ReturnToClass()
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
         public void ReturnToMenu()
         {
-
-            dataController.ResetCurrentRound();
+            dataController.GetNextRound();
+            PlayerPrefs.SetInt("Score", playerScore);
+            PlayerPrefs.SetInt("ScoreMax", playerMaxScore);
+            //dataController.ResetCurrentRound();
+            
             SceneManager.LoadScene("SampleScene");
         }
         public void saveScoreboard()
