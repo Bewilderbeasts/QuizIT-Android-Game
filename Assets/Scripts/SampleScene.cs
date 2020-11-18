@@ -152,6 +152,161 @@ public class SampleScene : MonoBehaviour
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
+    public void tablica10()
+    {
+        if (currentRound == 10)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica11()
+    {
+        if (currentRound == 11)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica12()
+    {
+        if (currentRound == 12)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica13()
+    {
+        if (currentRound == 13)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica14()
+    {
+        if (currentRound == 14)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica15()
+    {
+        if (currentRound == 15)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica16()
+    {
+        if (currentRound == 16)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica17()
+    {
+        if (currentRound == 17)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica18()
+    {
+        if (currentRound == 18)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica19()
+    {
+        if (currentRound == 19)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica20()
+    {
+        if (currentRound == 20)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica21()
+    {
+        if (currentRound == 21)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica22()
+    {
+        if (currentRound == 22)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    public void tablica23()
+    {
+        if (currentRound == 23)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("Idź do innej sali: " + currentRound.ToString());
+        }
+    }
+    
     // Update is called once per frame
     void Update()
     {
