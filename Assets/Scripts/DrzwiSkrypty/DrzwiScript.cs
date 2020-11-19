@@ -17,8 +17,11 @@ public class DrzwiScript : MonoBehaviour
       
         if (other.tag == "Player")
         {
+          
             anim.SetBool("DrzwiOpen", true);
+     
         }
+     
     }
     void OnTriggerExit(Collider other)
     {

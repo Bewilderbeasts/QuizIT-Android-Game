@@ -12,7 +12,6 @@ namespace Quiz.Scoreboards
     public class GameController : MonoBehaviour
     {
 
-
         public Text questionDisplayText;
         public Text scoreDisplayText;
         public Text timeRemainingDisplayText;
@@ -136,6 +135,8 @@ namespace Quiz.Scoreboards
             {
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
                 scoreDisplayText.text = "Wynik: " + playerScore.ToString();
+
+
             }
             // aula= 9 runda
             if (currentRound == 9)
