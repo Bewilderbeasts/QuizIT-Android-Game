@@ -43,6 +43,7 @@ namespace Quiz.Scoreboards
         private int currentRound;
 
         private List<GameObject> answerButtonGameObjects = new List<GameObject>();
+        private List<int> questionIndexesChosen = new List<int>();
 
         // Use this for initialization
         void Start()
@@ -86,6 +87,7 @@ namespace Quiz.Scoreboards
             Debug.Log("pytanie: " + numberQuestion);
             
             RemoveAnswerButtons();
+            ChooseQuestion();
             QuestionData questionData = questionPool[questionIndex];
             questionDisplayText.text = questionData.questionText;
             
@@ -97,6 +99,23 @@ namespace Quiz.Scoreboards
 
                 AnswerButton answerButton = answerButtonGameObject.GetComponent<AnswerButton>();
                 answerButton.Setup(questionData.answers[i]);
+            }
+        }
+        void ChooseQuestion()
+        {
+            bool questionChosen = false;
+
+            while (questionChosen != true) // While question chosen does not equal true
+            {
+
+                int random = Random.Range(0, questionPool.Length); // Choose a random number between 0 and the questionPool length
+
+                if (!questionIndexesChosen.Contains(random)) // If the new list doesn't contain the number
+                {
+                    questionIndexesChosen.Add(random); // Add the number to the list
+                    questionIndex = random; // Set the questionIndex to the number
+                    questionChosen = true; // Set questionChosen to true to end the while loop
+                }
             }
         }
 
