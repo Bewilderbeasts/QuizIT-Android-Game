@@ -10,13 +10,7 @@ public class sciana1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        wynik = PlayerPrefs.GetInt("Score");
+      wynik = PlayerPrefs.GetInt("Poziom");
          if (wynik > 0)
         {
 
@@ -25,6 +19,12 @@ public class sciana1 : MonoBehaviour
 
 
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
     
 }

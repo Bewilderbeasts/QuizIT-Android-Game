@@ -38,6 +38,7 @@ namespace Quiz.Scoreboards
         private int playerMaxScore;
         private int wynik;
         public string imie;
+        private int poziom;
         private int numberQuestion;
         private int currentRound;
 
@@ -51,6 +52,7 @@ namespace Quiz.Scoreboards
             currentRound = PlayerPrefs.GetInt("currentRound");
             playerScore = PlayerPrefs.GetInt("Score");
             playerMaxScore = PlayerPrefs.GetInt("ScoreMax");
+            poziom = PlayerPrefs.GetInt("Poziom");
             numberQuestion = 0;
 
             SetUpRound();
@@ -138,36 +140,65 @@ namespace Quiz.Scoreboards
 
 
             }
-            // aula= 9 runda
-            if (currentRound == 9)
+            if (currentRound == 23)
             {
-                if (numberQuestion < 5)
+                if (numberQuestion < 10)
                 {
                     questionIndex++;
                     ShowQuestion();
                 }
                 else
                 {
-                    EndRoundAula();
+                    KoniecGry();
                 }
             }
             else
             {
-                if (numberQuestion < 3)
+                // aula= 9 runda
+                if (currentRound == 9 || currentRound == 16)
                 {
-                    questionIndex++;
-                    ShowQuestion();
+                    if (numberQuestion < 5)
+                    {
+                        questionIndex++;
+                        ShowQuestion();
+                    }
+                    else
+                    {
+                        EndRoundAula();
+                    }
                 }
                 else
                 {
-                    EndRound();
+                    if (numberQuestion < 3)
+                    {
+                        questionIndex++;
+                        ShowQuestion();
+                    }
+                    else
+                    {
+                        EndRound();
+                    }
+
+
                 }
-
-
             }
 
         }
 
+        public void KoniecGry()
+        {
+            isRoundActive = false;
+
+            dataController.SubmitNewPlayerScore(playerScore);
+
+            questionDisplay.SetActive(false);
+
+            
+          
+             inputNameDisplay.SetActive(true);
+             inputFieldDisplay.SetActive(true);
+           
+        }
         public void EndRound()
         {
             isRoundActive = false;
@@ -203,7 +234,7 @@ namespace Quiz.Scoreboards
             }
             else
             {
-                PlayerPrefs.SetInt("Poziom", 1);
+                PlayerPrefs.SetInt("Poziom", poziom +1);
                 roundEndDisplay.SetActive(true);
             }
         }
