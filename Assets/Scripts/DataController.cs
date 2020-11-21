@@ -94,8 +94,19 @@ public class DataController : MonoBehaviour
 
     private void LoadGameData()
     {
-
-        string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
+        string sFilePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
+        string sJson;
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            UnityWebRequest www = UnityWebRequest.Get(sFilePath);
+            www.SendWebRequest();
+            while (!www.isDone) ;
+            sJson = www.downloadHandler.text;
+        }
+        else sJson = File.ReadAllText(sFilePath);
+        GameData loadedData = JsonUtility.FromJson<GameData>(sJson);
+        allRoundData = loadedData.allRoundData;
+        /*string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         if (File.Exists(filePath))
         {
             // Read the json from the file into a string
@@ -110,7 +121,28 @@ public class DataController : MonoBehaviour
         {
             Debug.LogError("Cannot load game data!");
         }
-
+        StartCoroutine(GetGames());*/
     }
+    /*IEnumerator GetGames()
+    {
+        string url = "http://localhost/data.json";
 
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        request.chunkedTransfer = false;
+        yield return request.Send();
+
+        if (request.isNetworkError)
+        {
+            //
+        }
+        else
+        {
+            if(request.isDone){
+                GameData loadedData = JsonHelper.GetArray<GameData>(request.downloadHandler.text);
+                allRoundData = loadedData.allRoundData;
+            }
+        }
+    }*/
+
+  
 }
