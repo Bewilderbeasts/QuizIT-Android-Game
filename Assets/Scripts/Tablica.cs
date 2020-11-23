@@ -9,7 +9,8 @@ public class Tablica : MonoBehaviour
 {
     private Animator anim;
     public GameObject TablicaDisplay;
-
+    
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +18,14 @@ public class Tablica : MonoBehaviour
        
     }
 
+
     
-   
+
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {
+        
             TablicaDisplay.SetActive(true);
             /* if (Input.GetKeyDown(KeyCode.E))
              {
@@ -35,12 +38,13 @@ public class Tablica : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            
             //anim.SetBool("tablica", false);
             TablicaDisplay.SetActive(false);
         }
     }
-   
 
+   
 
     // Update is called once per frame
     void Update()

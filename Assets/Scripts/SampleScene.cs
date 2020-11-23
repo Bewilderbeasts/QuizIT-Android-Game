@@ -13,10 +13,12 @@ public class SampleScene : MonoBehaviour
     public Text scoreDisplayText;
 
     private SavePosition savePosition;
-    
 
+    private bool showText = false;
+    private float timeText;
     private int playerScore;
     private int currentRound;
+    private int currentRoom;
     private int poziom;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class SampleScene : MonoBehaviour
         playerScore = PlayerPrefs.GetInt("Score");
         currentRound = PlayerPrefs.GetInt("currentRound");
         poziom = PlayerPrefs.GetInt("Poziom");
+        currentRoom = currentRound + 1;
         DisplayScore();
         
     }
@@ -48,7 +51,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
-            
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do kolejnej klasy " + currentRound.ToString());
         }
      }
@@ -60,7 +64,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
-          
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -72,6 +77,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -83,6 +90,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -94,6 +103,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -105,6 +116,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -116,6 +129,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -127,6 +142,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -138,6 +155,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -149,6 +168,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -160,6 +181,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -171,6 +194,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -182,6 +207,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -193,6 +220,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -204,6 +233,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -215,6 +246,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -226,6 +259,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -237,6 +272,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -248,6 +285,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -259,6 +298,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -270,6 +311,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -281,6 +324,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -292,6 +337,8 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
@@ -303,13 +350,32 @@ public class SampleScene : MonoBehaviour
         }
         else
         {
+            timeText = 5;
+            showText = true;
             Debug.Log("Idź do innej sali: " + currentRound.ToString());
         }
     }
-    
+    void OnGUI()
+    {
+        var centeredStyle = GUI.skin.GetStyle("Label");
+        centeredStyle.alignment = TextAnchor.UpperCenter;
+        centeredStyle.fontSize = 20;
+        if (showText)
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 250, 125), "W tej sali już byłeś. Idź do sali:" + currentRoom.ToString(), centeredStyle);
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (showText)
+        {
+            timeText -= Time.deltaTime;
+            
+
+            if (timeText <= 0f)
+            {
+                showText=false;
+            }
+
+        }
     }
 }
