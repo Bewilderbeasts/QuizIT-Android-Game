@@ -359,7 +359,7 @@ public class SampleScene : MonoBehaviour
     {
         var centeredStyle = GUI.skin.GetStyle("Label");
         centeredStyle.alignment = TextAnchor.UpperCenter;
-        centeredStyle.fontSize = 20;
+        centeredStyle.fontSize = 30;
         if (showText)
             GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 250, 125), "W tej sali już byłeś. Idź do sali:" + currentRoom.ToString(), centeredStyle);
     }
