@@ -20,6 +20,7 @@ public class MenuSceneController : MonoBehaviour
         resetPosition();
         SceneManager.LoadScene("SampleScene");
     }
+
     
     public void showHighScore()
     {
