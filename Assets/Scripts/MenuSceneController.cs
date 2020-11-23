@@ -7,6 +7,7 @@ public class MenuSceneController : MonoBehaviour
 {
     public GameObject highScoreDisplay;
     public GameObject MenuDisplay;
+    
     public float x, y, z;
 
     private DataController dataController;
