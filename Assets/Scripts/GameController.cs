@@ -24,6 +24,8 @@ namespace Quiz.Scoreboards
         public GameObject namePlayer;
         public GameObject inputNameDisplay;
         public GameObject inputFieldDisplay;
+        public AudioSource dobraodp;
+        public AudioSource zlaodp;
 
         private DataController dataController;
         private RoundData currentRoundData;
@@ -54,6 +56,7 @@ namespace Quiz.Scoreboards
             playerMaxScore = PlayerPrefs.GetInt("ScoreMax");
             poziom = PlayerPrefs.GetInt("Poziom");
             numberQuestion = 0;
+
 
             SetUpRound();
         }
@@ -135,17 +138,20 @@ namespace Quiz.Scoreboards
             numberQuestion += 1;
             if (isCorrect)
             {
+                dobraodp.Play();
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
                 scoreDisplayText.text = "Wynik: " + playerScore.ToString();
 
 
             }
+            else { zlaodp.Play(); }
             if (currentRound == 23)
             {
                 if (numberQuestion < 10)
                 {
                     questionIndex++;
                     ShowQuestion();
+                    
                 }
                 else
                 {
@@ -155,6 +161,7 @@ namespace Quiz.Scoreboards
             else
             {
                 // aula= 9 runda
+                
                 if (currentRound == 9 || currentRound == 16)
                 {
                     if (numberQuestion < 5)
