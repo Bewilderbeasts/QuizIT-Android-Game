@@ -26,6 +26,8 @@ namespace Quiz.Scoreboards
         public GameObject inputFieldDisplay;
         public AudioSource dobraodp;
         public AudioSource zlaodp;
+        public AudioSource success;
+
 
         private DataController dataController;
         private RoundData currentRoundData;
@@ -204,7 +206,8 @@ namespace Quiz.Scoreboards
           
              inputNameDisplay.SetActive(true);
              inputFieldDisplay.SetActive(true);
-           
+          
+
         }
         public void EndRound()
         {
@@ -213,15 +216,19 @@ namespace Quiz.Scoreboards
             dataController.SubmitNewPlayerScore(playerScore);
 
             questionDisplay.SetActive(false);
+            
 
             if (playerScore < playerMaxScore /1.5)
             {
+                
                 inputNameDisplay.SetActive(true);
                 inputFieldDisplay.SetActive(true);
             }
             else
             {
+
                 roundEndDisplay.SetActive(true);
+                
 
             }
         }
@@ -249,6 +256,7 @@ namespace Quiz.Scoreboards
         public void GoToNextRound()
         {
             dataController.GetNextRound();
+
 
             SetUpRound();
 
