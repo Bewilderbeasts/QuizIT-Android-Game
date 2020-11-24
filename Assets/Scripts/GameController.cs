@@ -214,7 +214,7 @@ namespace Quiz.Scoreboards
 
             questionDisplay.SetActive(false);
 
-            if (playerScore < playerMaxScore / 2)
+            if (playerScore < playerMaxScore /1.5)
             {
                 inputNameDisplay.SetActive(true);
                 inputFieldDisplay.SetActive(true);
