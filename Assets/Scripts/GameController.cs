@@ -14,7 +14,6 @@ namespace Quiz.Scoreboards
 
         public Text questionDisplayText;
         public Text scoreDisplayText;
-        public Text scoreEndDisplayText;
         public Text timeRemainingDisplayText;
         public SimpleObjectPool answerButtonObjectPool;
         public Transform answerButtonParent;
@@ -25,12 +24,11 @@ namespace Quiz.Scoreboards
         public GameObject namePlayer;
         public GameObject inputNameDisplay;
         public GameObject inputFieldDisplay;
-        
-        public GameObject scoreEndDisplay;
         public AudioSource dobraodp;
         public AudioSource zlaodp;
         public AudioSource success;
-
+        public GameObject ScoreEndDisplay;
+        public GameObject WinDisplay;
 
         private DataController dataController;
         private RoundData currentRoundData;
@@ -85,8 +83,7 @@ namespace Quiz.Scoreboards
 
         private void ShowPlayerScore()
         {
-            scoreDisplayText.text = "Wynik: " + playerScore.ToString();
-            scoreEndDisplayText.text = "Wynik: " + playerScore.ToString();
+            scoreDisplayText.text = "Score: " + playerScore.ToString();
         }
 
         private void ShowQuestion()
@@ -147,7 +144,6 @@ namespace Quiz.Scoreboards
                 dobraodp.Play();
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
                 scoreDisplayText.text = "Wynik: " + playerScore.ToString();
-                scoreEndDisplayText.text = "Wynik: " + playerScore.ToString();
 
 
             }
@@ -208,10 +204,11 @@ namespace Quiz.Scoreboards
             questionDisplay.SetActive(false);
 
 
-            scoreEndDisplay.SetActive(true);
-             inputNameDisplay.SetActive(true);
-             inputFieldDisplay.SetActive(true);
-          
+            ScoreEndDisplay.SetActive(true);
+            WinDisplay.SetActive(true);
+            inputFieldDisplay.SetActive(true);
+
+
 
         }
         public void EndRound()
@@ -225,7 +222,8 @@ namespace Quiz.Scoreboards
 
             if (playerScore < playerMaxScore /1.5)
             {
-                scoreEndDisplay.SetActive(true);
+                ScoreEndDisplay.SetActive(true);
+
                 inputNameDisplay.SetActive(true);
                 inputFieldDisplay.SetActive(true);
             }
@@ -248,7 +246,8 @@ namespace Quiz.Scoreboards
 
             if (playerScore < playerMaxScore / 2)
             {
-                scoreEndDisplay.SetActive(true);
+                ScoreEndDisplay.SetActive(true);
+
                 inputNameDisplay.SetActive(true);
                 inputFieldDisplay.SetActive(true);
             }
@@ -293,10 +292,21 @@ namespace Quiz.Scoreboards
             });
             saveName();
         }
+        public void saveScoreboardWin()
+        {
+            wynik = playerScore;
+            imie = namePlayer.GetComponent<Text>().text;
+            scoreboard.AddEntry(new ScoreboardEntryData()
+            {
+                entryName = imie,
+                entryScore = wynik
+            });
+            ReplayGame();
+        }
         public void saveName()
         {
+            ScoreEndDisplay.SetActive(false);
 
-            scoreEndDisplay.SetActive(false);
             gameOverDisplay.SetActive(true);
             inputNameDisplay.SetActive(false);
             inputFieldDisplay.SetActive(false);
