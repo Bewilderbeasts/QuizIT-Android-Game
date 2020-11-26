@@ -28,6 +28,7 @@ namespace Quiz.Scoreboards
         public AudioSource zlaodp;
         public AudioSource success;
         public GameObject ScoreEndDisplay;
+        public GameObject WinDisplay;
 
         private DataController dataController;
         private RoundData currentRoundData;
@@ -204,10 +205,10 @@ namespace Quiz.Scoreboards
 
 
             ScoreEndDisplay.SetActive(true);
+            WinDisplay.SetActive(true);
+            inputFieldDisplay.SetActive(true);
 
-            inputNameDisplay.SetActive(true);
-             inputFieldDisplay.SetActive(true);
-          
+
 
         }
         public void EndRound()
@@ -290,6 +291,17 @@ namespace Quiz.Scoreboards
                 entryScore = wynik
             });
             saveName();
+        }
+        public void saveScoreboardWin()
+        {
+            wynik = playerScore;
+            imie = namePlayer.GetComponent<Text>().text;
+            scoreboard.AddEntry(new ScoreboardEntryData()
+            {
+                entryName = imie,
+                entryScore = wynik
+            });
+            ReplayGame();
         }
         public void saveName()
         {
