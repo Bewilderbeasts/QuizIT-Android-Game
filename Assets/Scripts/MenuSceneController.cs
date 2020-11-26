@@ -7,7 +7,8 @@ public class MenuSceneController : MonoBehaviour
 {
     public GameObject highScoreDisplay;
     public GameObject MenuDisplay;
-    
+    public GameObject InstrukcjaDisplay;
+
     public float x, y, z;
 
     private DataController dataController;
@@ -22,7 +23,7 @@ public class MenuSceneController : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    
+
     public void showHighScore()
     {
         MenuDisplay.SetActive(false);
@@ -33,6 +34,19 @@ public class MenuSceneController : MonoBehaviour
         MenuDisplay.SetActive(true);
         highScoreDisplay.SetActive(false);
     }
+
+    public void showInstruction()
+    {
+        MenuDisplay.SetActive(false);
+        InstrukcjaDisplay.SetActive(true);
+    }
+    public void hideInstruction()
+    {
+        MenuDisplay.SetActive(true);
+        InstrukcjaDisplay.SetActive(false);
+    }
+
+
     public void resetPosition()
     {
         PlayerPrefs.SetFloat("x", 7.863055F);
