@@ -1212,7 +1212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &370959488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1553,6 +1553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionDisplayText: {fileID: 435410883}
   scoreDisplayText: {fileID: 1261540267}
+  ScoreEndDisplayText: {fileID: 1663881767}
   timeRemainingDisplayText: {fileID: 1111571168}
   answerButtonObjectPool: {fileID: 1532410304}
   answerButtonParent: {fileID: 445605680}
@@ -6004,7 +6005,7 @@ GameObject:
   - component: {fileID: 1663881768}
   - component: {fileID: 1663881767}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreEndText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6061,7 +6062,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Wynik:'
+  m_Text: 'Wynik:
+
+    100'
 --- !u!222 &1663881768
 CanvasRenderer:
   m_ObjectHideFlags: 0

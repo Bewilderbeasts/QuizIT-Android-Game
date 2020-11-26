@@ -14,6 +14,7 @@ namespace Quiz.Scoreboards
 
         public Text questionDisplayText;
         public Text scoreDisplayText;
+        public Text ScoreEndDisplayText;
         public Text timeRemainingDisplayText;
         public SimpleObjectPool answerButtonObjectPool;
         public Transform answerButtonParent;
@@ -84,6 +85,7 @@ namespace Quiz.Scoreboards
         private void ShowPlayerScore()
         {
             scoreDisplayText.text = "Score: " + playerScore.ToString();
+            ScoreEndDisplayText.text = "Wynik: " + playerScore.ToString();
         }
 
         private void ShowQuestion()
@@ -144,7 +146,7 @@ namespace Quiz.Scoreboards
                 dobraodp.Play();
                 playerScore += currentRoundData.pointsAddedForCorrectAnswer;
                 scoreDisplayText.text = "Wynik: " + playerScore.ToString();
-
+                ScoreEndDisplayText.text = "Wynik: " + playerScore.ToString();
 
             }
             else { zlaodp.Play(); }
